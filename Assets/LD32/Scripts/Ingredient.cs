@@ -10,13 +10,30 @@ public class Ingredient : MonoBehaviour {
 		get; private set;
 	}
 	
+	public void Pickup() {
+		carried = true;
+	}
+	
+	public void Drop() {
+		carried = false;
+		lastCarriedTime = Time.time;
+	}
+	
+	private float lastCarriedTime;
+	private bool carried;
+	
 	void Awake() {
 		rb = GetComponent<Rigidbody>();
+		lastCarriedTime = Mathf.Infinity;
 	}
 	
 	void OnCollisionEnter(Collision col) {
+		if (carried) return;
+		if (lastCarriedTime + 1f > Time.time) return;
+		
 		Ingredient other = col.gameObject.GetComponent<Ingredient>();
 		if (!other) return;
+		Debug.Log("Joined");
 		FixedJoint joint = gameObject.AddComponent<FixedJoint>();
 		joint.connectedBody = other.rb;
 		joint.breakForce = jointBreakForce;
