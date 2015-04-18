@@ -6,6 +6,7 @@ public class Server : MonoBehaviour {
 	private const string typeName = "LD32CookFight";
 	private const string gameName = "Kitchen32";
 	private HostData[] hostList;
+	public GameObject playerPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,11 @@ public class Server : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	private void SpawnPlayer()
+	{
+		Network.Instantiate(playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
 	}
 
 
@@ -28,6 +34,7 @@ public class Server : MonoBehaviour {
 	void OnServerInitialized()
 	{
 		Debug.Log("Server Initializied");
+		SpawnPlayer();
 	}
 	
 
@@ -50,6 +57,7 @@ public class Server : MonoBehaviour {
 	void OnConnectedToServer()
 	{
 		Debug.Log("Server Joined");
+		SpawnPlayer();
 	}
 	
 	void OnGUI()
@@ -72,4 +80,8 @@ public class Server : MonoBehaviour {
 			}
 		}
 	}
+	
+
+
+
 }
