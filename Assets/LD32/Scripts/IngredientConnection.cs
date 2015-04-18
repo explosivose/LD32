@@ -16,9 +16,10 @@ public class IngredientConnection : MonoBehaviour {
 	
 	void FixedUpdate() {
 		foreach(IngredientConnection i in connections) {
-			Vector3 direction = i.transform.position - transform.position;
+			Vector3 direction = transform.position - i.transform.position;
 			float force = pid.output(0f, direction.magnitude);
 			rb.AddForce(direction.normalized * force);
+			Debug.DrawRay(transform.position, direction.normalized * force);
 		}
 	}
 	
@@ -26,6 +27,7 @@ public class IngredientConnection : MonoBehaviour {
 		IngredientConnection con = col.GetComponent<IngredientConnection>();
 		if (!con) return;
 		if (!connections.Contains(con)) connections.Add(con);
+		Debug.Log(rb.gameObject.name + " connected to " + col.gameObject.name);
 	}
 	
 	void OnTriggerExit(Collider col) {
