@@ -2,23 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-<<<<<<< HEAD
-  serializedVersion: 3
-=======
   serializedVersion: 5
->>>>>>> origin/master
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: palette
-<<<<<<< HEAD
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: []
-=======
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
->>>>>>> origin/master
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -27,18 +18,7 @@ Material:
         first:
           name: _MainTex
         second:
-<<<<<<< HEAD
-          m_Texture: {fileID: 2800000, guid: 74c24aa8a35c9cd479dbce700b78b874, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-=======
-          m_Texture: {fileID: 2800000, guid: 5308d5984f36fc446bd180f69f49c815, type: 3}
+          m_Texture: {fileID: 2800000, guid: c411e838cf612b34c818988808800eb8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -163,4 +143,3 @@ Material:
         first:
           name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> origin/master

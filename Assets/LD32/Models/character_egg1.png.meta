@@ -1,11 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 239a192384382e04391ebcf672bf9e8f
-=======
-guid: 5308d5984f36fc446bd180f69f49c815
-timeCreated: 1429361151
-licenseType: Free
->>>>>>> origin/master
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -26,18 +20,12 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
-<<<<<<< HEAD
-  seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
-=======
   cubemapConvolution: 0
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
->>>>>>> origin/master
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: -1
@@ -45,10 +33,7 @@ TextureImporter:
     wrapMode: -1
   nPOTScale: 1
   lightmap: 0
-<<<<<<< HEAD
-=======
   rGBM: 0
->>>>>>> origin/master
   compressionQuality: 50
   spriteMode: 0
   spriteExtrude: 1
@@ -64,8 +49,5 @@ TextureImporter:
     sprites: []
   spritePackingTag: 
   userData: 
-<<<<<<< HEAD
-=======
   assetBundleName: 
   assetBundleVariant: 
->>>>>>> origin/master
