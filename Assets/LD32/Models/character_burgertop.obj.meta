@@ -1,9 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: ff0a286c667ad8f4a8a651f3dbbabb34
+ModelImporter:
+  serializedVersion: 16
+=======
 guid: 4f1d397220558dc4581e868a0f025941
 timeCreated: 1429361151
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
+>>>>>>> origin/master
   fileIDToRecycleName:
     100000: //RootNode
     100002: default
@@ -12,6 +18,10 @@ ModelImporter:
     2300000: default
     3300000: default
     4300000: default
+<<<<<<< HEAD
+    9500000: //RootNode
+=======
+>>>>>>> origin/master
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,13 +49,19 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+<<<<<<< HEAD
+=======
     keepQuads: 0
+>>>>>>> origin/master
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+<<<<<<< HEAD
+=======
     useFileScale: 1
+>>>>>>> origin/master
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -65,8 +81,14 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+<<<<<<< HEAD
+  animationType: 2
+  additionalBone: 0
+  userData: 
+=======
   animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> origin/master
