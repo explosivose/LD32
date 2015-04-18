@@ -2,6 +2,9 @@
 using System.Collections;
 
 [System.Serializable]
+/// <summary>
+/// PID controller (this is an engineering thing, good for controlling a variable).
+/// </summary>
 public class Pid {
 	public float kp, ki, kd;
 	public float error {get; private set;}
