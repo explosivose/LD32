@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 495124}
   - 95: {fileID: 9581138}
+  - 54: {fileID: 5491342}
   m_Layer: 0
   m_Name: character_burgertop
   m_TagString: Untagged
@@ -217,6 +218,21 @@ Rigidbody:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107570}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5491342
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198420}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
