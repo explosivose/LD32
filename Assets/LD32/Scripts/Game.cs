@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class Game : MonoBehaviour {
 
 	public static Game Instance;
+	public static bool hasStarted;
 	
 	public GameObject foodSpawner1;
 	public GameObject foodSpawner2;
@@ -21,6 +22,7 @@ public class Game : MonoBehaviour {
 	public void GameStart() {
 		SpawnRecipe(playerOne);
 		SpawnRecipe(playerTwo);
+		hasStarted = true;
 	}
 
 	void SpawnRecipe(Player player) {
@@ -77,4 +79,13 @@ public class Game : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 		GameStart();
 	}
+	
+	void OnGUI() {
+		if (!hasStarted) return;
+		GUILayout.Label("Player1 is making: " + playerOne.currentRecipe.name);
+		GUILayout.Label("Player1 score: " + playerOne.score);
+		
+	}
+	
 }
+
