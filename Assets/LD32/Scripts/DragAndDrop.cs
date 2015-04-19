@@ -8,6 +8,7 @@ public class DragAndDrop : MonoBehaviour {
 
 	public float reachDistanceFromCamera;
 	public Transform counter;
+	public float maxMoveForce;
 	public Pid controller;
 	
 	private Rigidbody _carrying;
@@ -49,18 +50,16 @@ public class DragAndDrop : MonoBehaviour {
 	void Pickup(Rigidbody rb) {
 		_carrying = rb;
 		_carrying.SendMessage("Pickup");
+		_carrying.constraints = RigidbodyConstraints.FreezePositionZ;
 		controller.Reset();
-		//_carrying.isKinematic = true;
-		//_carrying.useGravity = false;
-		
 	}
 	
 	// drop the rigidboy
 	void Drop() {
 		if (_carrying) {
-			//_carrying.isKinematic = false;
 			_carrying.SendMessage("Drop");
-			//_carrying.useGravity = true;
+			_carrying.constraints = RigidbodyConstraints.None;
+			_carrying.velocity = Vector3.zero;
 			_carrying = null;
 		}
 	}
@@ -74,9 +73,9 @@ public class DragAndDrop : MonoBehaviour {
 		mousePos.z = Mathf.Abs(Camera.main.transform.position.z - counter.position.z);
 		Vector3 target = Camera.main.ScreenToWorldPoint(mousePos);
 		Vector3 direction = (target - _carrying.position).normalized;
-		direction.z = 0f; // kill forward/back force
 		float force = -controller.output(0f, direction.magnitude);
-		Debug.DrawRay(_carrying.position, direction* force);
+		force = Mathf.Clamp(force, 0, maxMoveForce);
+		//Debug.DrawRay(_carrying.position, direction* force);
 		_carrying.AddForce(direction * force);
 	}
 }

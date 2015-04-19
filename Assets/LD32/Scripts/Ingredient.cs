@@ -26,16 +26,4 @@ public class Ingredient : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		lastCarriedTime = Mathf.Infinity;
 	}
-	
-	void OnCollisionEnter(Collision col) {
-		if (carried) return;
-		if (lastCarriedTime + 1f > Time.time) return;
-		
-		Ingredient other = col.gameObject.GetComponent<Ingredient>();
-		if (!other) return;
-		Debug.Log("Joined");
-		FixedJoint joint = gameObject.AddComponent<FixedJoint>();
-		joint.connectedBody = other.rb;
-		joint.breakForce = jointBreakForce;
-	}
 }
