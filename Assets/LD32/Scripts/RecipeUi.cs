@@ -15,6 +15,7 @@ public class RecipeUi : MonoBehaviour {
 	} 
 	
 	void Update() {
+		if (!Game.hasStarted) return;
 		text.text = player.currentRecipe.name +  " Recipe: \n";
 		foreach(GameObject ingredient in player.currentRecipe.ingredients) {
 			text.text += ingredient.name + "\n";
