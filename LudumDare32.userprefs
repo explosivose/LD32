@@ -6,7 +6,7 @@
       <File FileName="Assets\LD32\Scripts\Game.cs" Line="79" Column="46" />
       <File FileName="Assets\LD32\Scripts\Recipe.cs" Line="9" Column="24" />
       <File FileName="Assets\LD32\Scripts\RecipeSpawner.cs" Line="42" Column="21" />
-      <File FileName="Assets\LD32\Scripts\Catapult.cs" Line="49" Column="56" />
+      <File FileName="Assets\LD32\Scripts\Catapult.cs" Line="10" Column="2" />
       <File FileName="Assets\LD32\Scripts\Ingredient.cs" Line="9" Column="2" />
       <File FileName="Assets\LD32\Scripts\NetworkPlayerTest.cs" Line="4" Column="21" />
       <File FileName="Assets\LD32\Scripts\DragAndDrop.cs" Line="53" Column="11" />
