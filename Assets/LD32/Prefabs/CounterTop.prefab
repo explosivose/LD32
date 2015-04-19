@@ -166,7 +166,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 464212}
   - 114: {fileID: 11463458}
-  - 114: {fileID: 11443628}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -776,17 +775,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11443628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078c476ddfb1b744c96daaf392620ef4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11463458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -798,6 +786,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078c476ddfb1b744c96daaf392620ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomShit:
+    name: 
+    ingredients:
+    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
+    - {fileID: 118520, guid: b9765efe5290a7e43b6e7b0675dcabf8, type: 2}
+    - {fileID: 177080, guid: 2bd1cdde6480b6c4284c2756275fda7c, type: 2}
+    - {fileID: 180734, guid: dfbb1a098fa5914429f54b8315dfc1d2, type: 2}
+    - {fileID: 199530, guid: 48012bad365ece94488aba91e4f5e4ed, type: 2}
 --- !u!114 &11496764
 MonoBehaviour:
   m_ObjectHideFlags: 1
