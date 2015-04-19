@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour {
     private HostData[] hostList;
 
 	// UI
+	public GameObject NetUI;
 	public GameObject hostsUI;
 	public GameObject statusTextUI;
 	public GameObject hostLineUI;
@@ -38,27 +39,30 @@ public class Menu : MonoBehaviour {
         RefreshHostList();
     }
 
-	// Click Events
-    public void HostGame()
-    {
-		StartServer();
-    }
 
-	public void JoinGame()
+
+	public void JoinGame(HostData hostData)
 	{
+		Network.Connect(hostData);
+	}
 
+	void OnConnectedToServer()
+	{
+		Debug.Log("Server Joined");
+		NetUI.gameObject.SetActive(false);
+		//SpawnPlayer();
 	}
 	
 	
 	//----------------------------------------------
     // Host a game
 
-    void StartServer()
+	public void StartServer()
     {
 		string hname = hostNameInputUI.GetComponent<Text>().text;
 		if(hname.Length > 0){
 			bool useNat = !Network.HavePublicAddress();
-			NetworkConnectionError con = Network.InitializeServer(32, 25000, useNat);
+			NetworkConnectionError con = Network.InitializeServer(1, 25000, useNat);
 			if(con == NetworkConnectionError.NoError){
 				MasterServer.RegisterHost(typeName, hname);
 				statusTextUI.GetComponent<Text>().text = "Waiting for an opponent...";
@@ -75,11 +79,15 @@ public class Menu : MonoBehaviour {
     void OnServerInitialized()
     {
         Debug.Log("Server Initializied");
-        //SpawnPlayer();
     }
 
-    //----------------------------------------------
-    // Host refresh
+	void OnPlayerConnected(NetworkPlayer player) {
+		Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
+		//SpawnPlayer();
+	}
+	
+	//----------------------------------------------
+    // Host browser
 
     private void RefreshHostList()
     {
@@ -97,14 +105,23 @@ public class Menu : MonoBehaviour {
 
 			int count = 0;
 			foreach(HostData host in hostList){
-				count += 1;
+
 				GameObject hostline = Instantiate(hostLineUI);
 				hostLines.Add(hostline);
 				hostline.transform.SetParent(hostsUI.transform, false);
 				hostline.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -30f*count);
+				Transform b = hostline.transform.FindChild("Button");
+				b.FindChild("HostLineText").GetComponent<Text>().text = host.gameName;
+				hostline.GetComponent<HostInfo>().payload = host;
+				count += 1;
+				Button joinbutton = b.GetComponent<Button>();
+				joinbutton.onClick.AddListener(() => JoinGame(host));
+
 			}
 
         }
+
+		Debug.Log (msEvent);
         
     }
 }
