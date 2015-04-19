@@ -4,14 +4,19 @@ using System.Collections;
 // spawns recipes!
 public class RecipeSpawner : MonoBehaviour {
 
+	public Recipe randomShit;
 	
 	private bool _spawning;
 	private Recipe _recipe;
 	
-	void Awake() {
-
+	IEnumerator Start() {
+		yield return new WaitForSeconds(Random.Range(3f, 6f));
+		int index = Random.Range(0, randomShit.ingredients.Count-1);
+		GameObject randomIngredient = randomShit.ingredients[index];
+		SpawnIngredient(randomIngredient);
 	}
 	
+
 	/// <summary>
 	/// Spawns a random recipe for a given player
 	/// </summary>
@@ -33,10 +38,14 @@ public class RecipeSpawner : MonoBehaviour {
 		
 		// spawn ingredients from recipe
 		foreach(GameObject ingredient in _recipe.ingredients) {
-			GameObject instance = Instantiate(ingredient, transform.position, Quaternion.identity) as GameObject;
-			instance.name = ingredient.name;
+			SpawnIngredient(ingredient);
 			yield return new WaitForSeconds(0.5f);
 		}
 		_spawning = false;
+	}
+	
+	void SpawnIngredient(GameObject ingredient) {
+		GameObject instance = Instantiate(ingredient, transform.position, Quaternion.identity) as GameObject;
+		instance.name = ingredient.name;
 	}
 }
