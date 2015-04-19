@@ -40,9 +40,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd42980d126de12489d7575e5a9b2c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 0}
+  NetUI: {fileID: 0}
   hostsUI: {fileID: 0}
   statusTextUI: {fileID: 0}
-  hostLineUI: {fileID: 130756, guid: 54629520c0814ee4996185e97289db93, type: 2}
+  hostLineUI: {fileID: 113944, guid: 54629520c0814ee4996185e97289db93, type: 2}
   hostNameInputUI: {fileID: 0}
 --- !u!148 &14863652
 NetworkView:

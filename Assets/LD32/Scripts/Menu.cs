@@ -8,6 +8,11 @@ public class Menu : MonoBehaviour {
     private const string typeName = "LD32CookFight";
     private HostData[] hostList;
 
+	// Spawning
+	public GameObject playerPrefab;
+	private Vector3 spawnPointA;
+	private Vector3 spawnPointB;
+
 	// UI
 	public GameObject NetUI;
 	public GameObject hostsUI;
@@ -16,12 +21,7 @@ public class Menu : MonoBehaviour {
 	public GameObject hostNameInputUI;
 
 	private List<GameObject> hostLines;
-
-	// Network level loading
-	//private string[] supportedNetworkLevels= [ "mylevel" ];
-	//private string disconnectedLevel = "loader";
-	//private int lastLevelPrefix = 0;
-
+	
 	// Use this for initialization
 	void Start () {
 		hostLines = new List<GameObject>();
@@ -39,8 +39,7 @@ public class Menu : MonoBehaviour {
         RefreshHostList();
     }
 
-
-
+	
 	public void JoinGame(HostData hostData)
 	{
 		Network.Connect(hostData);
@@ -50,9 +49,13 @@ public class Menu : MonoBehaviour {
 	{
 		Debug.Log("Server Joined");
 		NetUI.gameObject.SetActive(false);
-		//SpawnPlayer();
+		SpawnPlayer(spawnPointB);
 	}
-	
+
+	private void SpawnPlayer(Vector3 spawnPosition)
+	{
+		Network.Instantiate(playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+	}
 	
 	//----------------------------------------------
     // Host a game
@@ -83,6 +86,7 @@ public class Menu : MonoBehaviour {
 
 	void OnPlayerConnected(NetworkPlayer player) {
 		Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
+
 		//SpawnPlayer();
 	}
 	
@@ -98,7 +102,6 @@ public class Menu : MonoBehaviour {
     {
         if (msEvent == MasterServerEvent.HostListReceived){ 
             hostList = MasterServer.PollHostList();
-            //Debug.Log(hostList[0].gameName);
 			statusTextUI.GetComponent<Text>().text = "Hosts found: " + hostList.Length;
 
 			hostLines.ForEach(child => Destroy(child));
