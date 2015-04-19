@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107570}
   m_LocalRotation: {x: 0, y: 0, z: .670672178, w: .741753995}
-  m_LocalPosition: {x: .246747255, y: 1.54310071, z: -3}
+  m_LocalPosition: {x: .017874632, y: -5.45118615e-20, z: .00245499588}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495124}
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -.564999998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437824}
@@ -128,7 +128,7 @@ Rigidbody:
   m_GameObject: {fileID: 107570}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -141,7 +141,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103220}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c523516e3682fac4687b52092c540e06, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

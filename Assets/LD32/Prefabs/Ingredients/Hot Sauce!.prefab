@@ -98,7 +98,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114764}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 1.5
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -112,7 +112,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118666}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c523516e3682fac4687b52092c540e06, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

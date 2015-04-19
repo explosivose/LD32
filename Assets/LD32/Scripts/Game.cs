@@ -10,6 +10,7 @@ public class Game : MonoBehaviour {
 	public static Game Instance;
 	public static bool hasStarted;
 	
+	public float startTimer;
 	public GameObject foodSpawner1;
 	public GameObject foodSpawner2;
 	
@@ -75,8 +76,8 @@ public class Game : MonoBehaviour {
 	}
 	
 	IEnumerator Start() {
-		Debug.Log("Game start in 3 seconds");
-		yield return new WaitForSeconds(3f);
+		Debug.Log("Game start in " + startTimer + " seconds");
+		yield return new WaitForSeconds(startTimer);
 		GameStart();
 	}
 	
