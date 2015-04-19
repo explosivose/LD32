@@ -18,7 +18,7 @@ public class RecipeUi : MonoBehaviour {
 		if (!Game.hasStarted) return;
 		text.text = player.currentRecipe.name +  " Recipe: \n";
 		foreach(GameObject ingredient in player.currentRecipe.ingredients) {
-			text.text += ingredient.name + "\n";
+			text.text += ingredient.name + ", ";
 		} 
 	}
 }

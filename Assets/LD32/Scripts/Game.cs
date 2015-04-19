@@ -83,7 +83,7 @@ public class Game : MonoBehaviour {
 	
 	void OnGUI() {
 		if (!hasStarted) return;
-		GUILayout.Label("Player1 is making: " + playerOne.currentRecipe.name);
+		//GUILayout.Label("Player1 is making: " + playerOne.currentRecipe.name);
 		GUILayout.Label("Player1 score: " + playerOne.score);
 		
 	}
