@@ -14,8 +14,8 @@ public class Game : MonoBehaviour {
 	public GameObject foodSpawner1;
 	public GameObject foodSpawner2;
 	
-	public Player playerOne;
-	public Player playerTwo;
+	public Player playerOne {get; set;}
+	public Player playerTwo {get; set;}
 	
 	public Recipe[] recipes;
 
@@ -69,9 +69,11 @@ public class Game : MonoBehaviour {
 		else Destroy(this);
 		playerOne = new Player();	// server
 		playerOne.id = Player.Id.one;
+		playerOne.name = "Contestant 1";
 		playerOne.spawner = foodSpawner1.GetComponent<RecipeSpawner>();
 		playerTwo = new Player();	// client
 		playerTwo.id = Player.Id.two;
+		playerTwo.name = "Contestant 2";
 		playerTwo.spawner = foodSpawner2.GetComponent<RecipeSpawner>();
 	}
 	

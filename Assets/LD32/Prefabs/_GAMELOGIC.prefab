@@ -36,7 +36,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 136868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d763426ced05e4459445da3a1bd9bde, type: 3}
+  m_Script: {fileID: 11500000, guid: 00cf5e22e8310ad4296a3b6939492f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startTimer: 0
@@ -51,54 +51,14 @@ MonoBehaviour:
       ingredients: []
     spawner: {fileID: 0}
   playerTwo:
-    id: 1
+    id: 0
     name: 
     score: 0
     currentRecipe:
       name: 
       ingredients: []
     spawner: {fileID: 0}
-  recipes:
-  - name: Simple Patty
-    ingredients:
-    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
-    - {fileID: 177080, guid: 2bd1cdde6480b6c4284c2756275fda7c, type: 2}
-    - {fileID: 123950, guid: 542def951a814944bab97f362608d4b7, type: 2}
-    - {fileID: 179456, guid: e5f787df3b00c574fb6e8d97d460369a, type: 2}
-  - name: Inferno Burger
-    ingredients:
-    - {fileID: 114764, guid: 7b0cc6cfeb71029438ff7a7beab1f015, type: 2}
-    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
-    - {fileID: 177080, guid: 2bd1cdde6480b6c4284c2756275fda7c, type: 2}
-    - {fileID: 179456, guid: e5f787df3b00c574fb6e8d97d460369a, type: 2}
-    - {fileID: 184854, guid: 4b7fc4a35167311408aac4ca0737087a, type: 2}
-    - {fileID: 180734, guid: dfbb1a098fa5914429f54b8315dfc1d2, type: 2}
-  - name: Breakfast Butty
-    ingredients:
-    - {fileID: 180734, guid: dfbb1a098fa5914429f54b8315dfc1d2, type: 2}
-    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
-    - {fileID: 179456, guid: e5f787df3b00c574fb6e8d97d460369a, type: 2}
-    - {fileID: 145350, guid: 085e7a2c6fd849047968df55190d3e19, type: 2}
-    - {fileID: 118520, guid: b9765efe5290a7e43b6e7b0675dcabf8, type: 2}
-  - name: Bacon Double Cheeseburger
-    ingredients:
-    - {fileID: 177080, guid: 2bd1cdde6480b6c4284c2756275fda7c, type: 2}
-    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
-    - {fileID: 177080, guid: 2bd1cdde6480b6c4284c2756275fda7c, type: 2}
-    - {fileID: 180734, guid: dfbb1a098fa5914429f54b8315dfc1d2, type: 2}
-    - {fileID: 194712, guid: f1a3ada6d92614747aeb4eb9564d4f9a, type: 2}
-  - name: Egg Roll
-    ingredients:
-    - {fileID: 153172, guid: 635b7bd6c216242408a9bbf1b3d67862, type: 2}
-    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
-    - {fileID: 145350, guid: 085e7a2c6fd849047968df55190d3e19, type: 2}
-    - {fileID: 123950, guid: 542def951a814944bab97f362608d4b7, type: 2}
-  - name: Salad
-    ingredients:
-    - {fileID: 179456, guid: e5f787df3b00c574fb6e8d97d460369a, type: 2}
-    - {fileID: 184854, guid: 4b7fc4a35167311408aac4ca0737087a, type: 2}
-    - {fileID: 123950, guid: 542def951a814944bab97f362608d4b7, type: 2}
-    - {fileID: 114764, guid: 7b0cc6cfeb71029438ff7a7beab1f015, type: 2}
+  recipes: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

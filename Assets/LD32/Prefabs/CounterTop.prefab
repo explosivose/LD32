@@ -307,7 +307,7 @@ GameObject:
   - 4: {fileID: 464212}
   - 114: {fileID: 11463458}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,8 +501,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .5, z: -3}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 3.57627869e-07}
+  m_LocalPosition: {x: 0, y: .5, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419166}
@@ -669,7 +669,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9d6c14ec6dd95c1458798e38871a7d93, type: 2}
+  - {fileID: 2100000, guid: e27e0be1379a315418bd22eaf09f4ce3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -693,7 +693,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: b51b41a712d2b2642baa1bb8cd7d8442, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -861,7 +861,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: b51b41a712d2b2642baa1bb8cd7d8442, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1181,10 +1181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 148002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9473db3d28e83f4cb2d0d583ab795e9, type: 3}
+  m_Script: {fileID: 11500000, guid: a95a4428f06c89f44b9d900393040f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
+  playerId: 1
 --- !u!114 &11463458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1193,17 +1193,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 178058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078c476ddfb1b744c96daaf392620ef4, type: 3}
+  m_Script: {fileID: 11500000, guid: d60bf536321885845bb3573959d91610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   randomShit:
     name: 
     ingredients:
-    - {fileID: 107570, guid: 6410cee00f25477469b2170b09cd1983, type: 2}
-    - {fileID: 118520, guid: b9765efe5290a7e43b6e7b0675dcabf8, type: 2}
-    - {fileID: 177080, guid: 2bd1cdde6480b6c4284c2756275fda7c, type: 2}
-    - {fileID: 180734, guid: dfbb1a098fa5914429f54b8315dfc1d2, type: 2}
-    - {fileID: 0}
+    - {fileID: 145350, guid: 80770675930a9b24894f44814644839b, type: 2}
+    - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
+    - {fileID: 153172, guid: dfbe06effbedf474998bb2d714d11750, type: 2}
+    - {fileID: 184854, guid: f9b812e1508ab6544910b7e58982110a, type: 2}
+    - {fileID: 123950, guid: 3bc84ca313e95234eb4674acbafb91df, type: 2}
 --- !u!114 &11464178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79bffa13e052a14c8dd5e89c3c08894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
+  playerId: 1
   triggerRadius: .600000024
   target: {fileID: 460808}
 --- !u!136 &13667370
