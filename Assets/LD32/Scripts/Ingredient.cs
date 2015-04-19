@@ -1,29 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Ingredient : MonoBehaviour {
 	
-	public float jointBreakForce;
+	public int score;
 	
-	public Rigidbody rb {
-		get; private set;
+	public Transform instance {
+		get { return _instance; }
+		set {
+			_instance = value;
+			_instance.name = name; // removes "(Clone)" from instantiations
+		}
 	}
 	
-	public void Pickup() {
-		carried = true;
-	}
+	private Transform _instance;
 	
-	public void Drop() {
-		carried = false;
-		lastCarriedTime = Time.time;
-	}
-	
-	private float lastCarriedTime;
-	private bool carried;
 	
 	void Awake() {
-		rb = GetComponent<Rigidbody>();
-		lastCarriedTime = Mathf.Infinity;
+		tag = "Ingredient";
 	}
 }

@@ -43,10 +43,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 481222}
   - 54: {fileID: 5495638}
-  - 114: {fileID: 11418056}
   m_Layer: 0
   m_Name: BurgerBottom
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,8 +81,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199530}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .865999997, z: -2.95900011}
+  m_LocalRotation: {x: 0, y: 0, z: .670672178, w: .741753995}
+  m_LocalPosition: {x: .698453367, y: 1.4975208, z: -2.95900011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400980}
@@ -128,7 +127,7 @@ Rigidbody:
   m_GameObject: {fileID: 199530}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -164,18 +163,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11418056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed4511076313ca41b9aafe21a385c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jointBreakForce: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

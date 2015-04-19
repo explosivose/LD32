@@ -27,10 +27,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 465490}
   - 54: {fileID: 5468448}
-  - 114: {fileID: 11428934}
   m_Layer: 0
   m_Name: BlueCheese
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,8 +80,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118520}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07799995, y: 1.88999999, z: -2.25399995}
+  m_LocalRotation: {x: 0, y: 0, z: .670672178, w: .741753995}
+  m_LocalPosition: {x: -.102879897, y: 1.46480727, z: -2.25399995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442852}
@@ -127,7 +126,7 @@ Rigidbody:
   m_GameObject: {fileID: 118520}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -146,18 +145,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: da7af7803b98d854db54f7f6b5127da1, type: 3}
---- !u!114 &11428934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed4511076313ca41b9aafe21a385c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jointBreakForce: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

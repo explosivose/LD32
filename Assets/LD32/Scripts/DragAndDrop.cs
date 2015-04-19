@@ -49,7 +49,7 @@ public class DragAndDrop : MonoBehaviour {
 	// pickup a rigidbody
 	void Pickup(Rigidbody rb) {
 		_carrying = rb;
-		_carrying.SendMessage("Pickup");
+		//_carrying.SendMessage("Pickup");
 		_carrying.constraints = RigidbodyConstraints.FreezePositionZ;
 		controller.Reset();
 	}
@@ -57,7 +57,7 @@ public class DragAndDrop : MonoBehaviour {
 	// drop the rigidboy
 	void Drop() {
 		if (_carrying) {
-			_carrying.SendMessage("Drop");
+			//_carrying.SendMessage("Drop");
 			_carrying.constraints = RigidbodyConstraints.None;
 			_carrying.velocity = Vector3.zero;
 			_carrying = null;
