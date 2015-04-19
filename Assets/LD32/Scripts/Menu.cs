@@ -10,8 +10,8 @@ public class Menu : MonoBehaviour {
 
 	// Spawning
 	public GameObject playerPrefab;
-	private Vector3 spawnPointA;
-	private Vector3 spawnPointB;
+	public GameObject spawnPointA;
+	public GameObject spawnPointB;
 
 	// UI
 	public GameObject NetUI;
@@ -52,14 +52,13 @@ public class Menu : MonoBehaviour {
 		SpawnPlayer(spawnPointB);
 	}
 
-	private void SpawnPlayer(Vector3 spawnPosition)
+	private void SpawnPlayer(GameObject spawnPoint)
 	{
-		Network.Instantiate(playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+		Network.Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity, 0);
 	}
 	
-	//----------------------------------------------
-    // Host a game
 
+    // Host a game
 	public void StartServer()
     {
 		string hname = hostNameInputUI.GetComponent<Text>().text;
@@ -86,8 +85,8 @@ public class Menu : MonoBehaviour {
 
 	void OnPlayerConnected(NetworkPlayer player) {
 		Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
-
-		//SpawnPlayer();
+		NetUI.gameObject.SetActive(false);
+		SpawnPlayer(spawnPointA);
 	}
 	
 	//----------------------------------------------
@@ -123,8 +122,6 @@ public class Menu : MonoBehaviour {
 			}
 
         }
-
-		Debug.Log (msEvent);
         
     }
 }
