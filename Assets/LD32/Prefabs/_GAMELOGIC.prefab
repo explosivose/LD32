@@ -51,7 +51,7 @@ MonoBehaviour:
       ingredients: []
     spawner: {fileID: 0}
   playerTwo:
-    id: 0
+    id: 1
     name: 
     score: 0
     currentRecipe:
