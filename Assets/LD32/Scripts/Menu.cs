@@ -16,6 +16,11 @@ public class Menu : MonoBehaviour {
 
 	private List<GameObject> hostLines;
 
+	// Network level loading
+	//private string[] supportedNetworkLevels= [ "mylevel" ];
+	//private string disconnectedLevel = "loader";
+	//private int lastLevelPrefix = 0;
+
 	// Use this for initialization
 	void Start () {
 		hostLines = new List<GameObject>();
@@ -33,12 +38,19 @@ public class Menu : MonoBehaviour {
         RefreshHostList();
     }
 
+	// Click Events
     public void HostGame()
     {
 		StartServer();
     }
 
-    //----------------------------------------------
+	public void JoinGame()
+	{
+
+	}
+	
+	
+	//----------------------------------------------
     // Host a game
 
     void StartServer()
