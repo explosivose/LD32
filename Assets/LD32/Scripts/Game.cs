@@ -68,8 +68,14 @@ public class Game : Photon.MonoBehaviour {
 	
 	public void GameStop() {
 		Debug.Log("Game over...");
-		photonView.RPC("GameStopRPC", PhotonTargets.All);
+		if (PhotonNetwork.inRoom)
+			photonView.RPC("GameStopRPC", PhotonTargets.All);
 		
+	}
+	
+	void SpawnRecipe(Player player) {
+		player.SetRecipe(Random.Range(0, recipes.Length-1));
+		photonView.RPC("SpawnRecipeRPC", PhotonTargets.All, (int)player.id);
 	}
 	
 	[RPC]
@@ -82,8 +88,9 @@ public class Game : Photon.MonoBehaviour {
 		hasStarted = false;
 	}
 	
-	void SpawnRecipe(Player player) {
-		player.currentRecipe = recipes[Random.Range(0, recipes.Length-1)];
+	[RPC]
+	void SpawnRecipeRPC(int playerId) {
+		Player player = PlayerById((Player.Id)playerId);
 		player.spawner.SpawnRecipe(player.currentRecipe);
 	}
 

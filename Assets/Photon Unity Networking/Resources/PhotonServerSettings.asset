@@ -36,4 +36,5 @@ MonoBehaviour:
   - TaggedPlayer
   - GameStartRPC
   - GameStopRPC
+  - SpawnRecipeRPC
   DisableAutoOpenWizard: 0
