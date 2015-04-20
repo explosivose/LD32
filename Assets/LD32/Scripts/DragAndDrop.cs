@@ -51,9 +51,14 @@ public class DragAndDrop : MonoBehaviour {
 	void Pickup(Rigidbody rb) {
 		_carrying = rb;
 		//_carrying.SendMessage("Pickup");
+		PhotonView view = _carrying.GetComponent<PhotonView>();
+		if (view) {
+			if (!view.owner.isLocal) {
+				view.TransferOwnership(PhotonNetwork.player);
+			}
+		}
 		_carrying.constraints = RigidbodyConstraints.FreezePositionZ;
 		controller.Reset();
-		Debug.Log("Carrying " + _carrying.name);
 	}
 	
 	// drop the rigidboy
@@ -62,7 +67,6 @@ public class DragAndDrop : MonoBehaviour {
 			//_carrying.SendMessage("Drop");
 			_carrying.constraints = RigidbodyConstraints.None;
 			_carrying.velocity = Vector3.zero;
-			Debug.Log("Droppped " + _carrying.name);
 			_carrying = null;
 		}
 	}
