@@ -75,7 +75,9 @@ public class Game : Photon.MonoBehaviour {
 	
 	void SpawnRecipe(Player player) {
 		player.SetRecipe(Random.Range(0, recipes.Length-1));
-		photonView.RPC("SpawnRecipeRPC", PhotonTargets.All, (int)player.id);
+		
+		if (player.player.isLocal)
+			player.spawner.SpawnRecipe(player.currentRecipe);
 	}
 	
 	[RPC]
@@ -88,11 +90,6 @@ public class Game : Photon.MonoBehaviour {
 		hasStarted = false;
 	}
 	
-	[RPC]
-	void SpawnRecipeRPC(int playerId) {
-		Player player = PlayerById((Player.Id)playerId);
-		player.spawner.SpawnRecipe(player.currentRecipe);
-	}
 
 	/// <summary>
 	/// Score the specified playerId according to ingredientNames.

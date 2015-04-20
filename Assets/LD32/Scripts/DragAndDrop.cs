@@ -42,6 +42,7 @@ public class DragAndDrop : MonoBehaviour {
 		if (Physics.Raycast(ray, out hit, reachDistanceFromCamera)) {
 			if(hit.rigidbody) {
 				Pickup(hit.rigidbody);
+				Debug.DrawLine(transform.position ,hit.point, Color.red);
 			}
 		}
 	}
@@ -52,6 +53,7 @@ public class DragAndDrop : MonoBehaviour {
 		//_carrying.SendMessage("Pickup");
 		_carrying.constraints = RigidbodyConstraints.FreezePositionZ;
 		controller.Reset();
+		Debug.Log("Carrying " + _carrying.name);
 	}
 	
 	// drop the rigidboy
@@ -60,6 +62,7 @@ public class DragAndDrop : MonoBehaviour {
 			//_carrying.SendMessage("Drop");
 			_carrying.constraints = RigidbodyConstraints.None;
 			_carrying.velocity = Vector3.zero;
+			Debug.Log("Droppped " + _carrying.name);
 			_carrying = null;
 		}
 	}
@@ -70,12 +73,13 @@ public class DragAndDrop : MonoBehaviour {
 		
 		// set a carry force to follow the mouse cursor
 		Vector3 mousePos = Input.mousePosition;
-		mousePos.z = _carrying.position.z;
+		mousePos.z = Mathf.Abs(transform.position.z - _carrying.position.z);
 		Vector3 target = Camera.main.ScreenToWorldPoint(mousePos);
+		Debug.DrawLine(transform.position, target, Color.green);
 		Vector3 direction = (target - _carrying.position).normalized;
 		float force = -controller.output(0f, direction.magnitude);
 		force = Mathf.Clamp(force, 0, maxMoveForce);
-		//Debug.DrawRay(_carrying.position, direction* force);
 		_carrying.AddForce(direction * force);
+		Debug.DrawRay(_carrying.position, direction * force, Color.blue);
 	}
 }

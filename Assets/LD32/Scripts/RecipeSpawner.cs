@@ -11,7 +11,7 @@ public class RecipeSpawner : MonoBehaviour {
 	
 	IEnumerator Start() {
 		yield return new WaitForSeconds(Random.Range(3f, 6f));
-		if (Game.hasStarted) {
+		if (Game.hasStarted && !_spawning) {
 			int index = Random.Range(0, randomShit.ingredients.Count-1);
 			GameObject randomIngredient = randomShit.ingredients[index];
 			SpawnIngredient(randomIngredient);
@@ -47,7 +47,10 @@ public class RecipeSpawner : MonoBehaviour {
 	}
 	
 	void SpawnIngredient(GameObject ingredient) {
-		GameObject instance = Instantiate(ingredient, transform.position, Quaternion.identity) as GameObject;
+		GameObject instance = PhotonNetwork.Instantiate(
+			ingredient.name,
+			transform.position,
+			Random.rotation, 0);
 		instance.name = ingredient.name;
 	}
 }
