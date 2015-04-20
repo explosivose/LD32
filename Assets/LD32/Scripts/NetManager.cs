@@ -59,6 +59,7 @@ public class NetManager : Photon.MonoBehaviour {
 	
 	void Start() {
 		Debug.Log("Connecting to PhotonMaster...");
+		PhotonNetwork.logLevel = logLevel;
 		PhotonNetwork.ConnectUsingSettings(gameType);
 	}
 	
@@ -66,7 +67,7 @@ public class NetManager : Photon.MonoBehaviour {
 	
 	// Called after the connection to the master is established and authenticated but only when PhotonNetwork.autoJoinLobby is false.
 	void OnConnectedToMaster() {
-		PhotonNetwork.logLevel = logLevel;
+		
 		Debug.Log("Connected to PhotonMaster.");
 		Menu.Instance.state = Menu.State.FindGame;
 	}

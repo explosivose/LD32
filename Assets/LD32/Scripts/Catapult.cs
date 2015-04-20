@@ -14,9 +14,9 @@ public class Catapult : Photon.MonoBehaviour {
 	private float timeOfFlight;
 	private Quaternion _armInitialRot;
 	private bool _launched;
-	
+		
 	// launch objects 
-	public void Launch() {
+	void Launch() {
 		List<string> ingredientNames = new List<string>();
 		
 		// get an array of objects within a radius

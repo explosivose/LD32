@@ -149,7 +149,12 @@ public class Game : Photon.MonoBehaviour {
 		defaultCamera = Camera.main.gameObject;
 	}
 	
-
+	void Update() {
+		if (Input.GetKey(KeyCode.Space)) {
+			if (playerOne.player.isLocal) catapult1.SendMessage("OnPushButtonDown");
+			if (playerTwo.player.isLocal) catapult2.SendMessage("OnPushButtonDown");
+		}
+	}
 	
 	void OnGUI() {
 		if (!hasStarted) return;
