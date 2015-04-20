@@ -6,6 +6,7 @@ using System.Collections;
 public class Ingredient : Photon.MonoBehaviour {
 	
 	public int score;
+	public AudioClip[]	_collisionSounds;
 	
 	private Rigidbody	_rb;
 	private Color 		_debugOwner;
@@ -58,6 +59,20 @@ public class Ingredient : Photon.MonoBehaviour {
 			transform.localRotation = Quaternion.Lerp(_onUpdateRot, _latestRot, _updateFraction);
 		} else {
 			_rb.isKinematic = false; // calculate physics locally
+		}
+	}
+	
+	void OnCollisionEnter(Collision info) {
+		if (info.relativeVelocity.magnitude > 1f) {
+			photonView.RPC("PlayRandomCollisionSound", PhotonTargets.All);
+		}
+	}
+	
+	[RPC]
+	void PlayRandomCollisionSound() {
+		if (_collisionSounds.Length > 0) {
+			int index = Random.Range(0, _collisionSounds.Length-1);
+			AudioSource.PlayClipAtPoint(_collisionSounds[index], transform.position, 0.5f);
 		}
 	}
 	

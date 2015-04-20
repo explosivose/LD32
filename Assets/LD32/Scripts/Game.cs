@@ -10,7 +10,11 @@ public class Game : Photon.MonoBehaviour {
 	public static Game Instance;
 	public static bool hasStarted;
 	
+	public float gameTime = 5f;
 	public float startTimer;
+	public AudioClip menuMusic;
+	public AudioClip gameOverMusic;
+	public AudioClip buzzer;
 	[Header("Player 1 (server)")]
 	public GameObject foodSpawner1;
 	public GameObject camera1;
@@ -28,15 +32,24 @@ public class Game : Photon.MonoBehaviour {
 	public Recipe[] recipes;
 	
 	private GameObject defaultCamera;
+	private float endTime;
+	private AudioSource _audio;
+	
+	public string winnerName {
+		get; private set;
+	}
 	
 	public void JoinedGame() {
+		
 		if (PhotonNetwork.isMasterClient) {
+			if (PhotonNetwork.player.name.Length == 0) PhotonNetwork.player.name = "Player1";
 			playerOne.player = PhotonNetwork.player;
 			defaultCamera.SetActive(false);
 			camera1.SetActive(true);
 			catapult1.GetComponent<Catapult>().playerId = playerOne.id;
 		} else {
 			// me
+			if (PhotonNetwork.player.name.Length == 0) PhotonNetwork.player.name = "Player2";
 			playerTwo.player = PhotonNetwork.player;
 			defaultCamera.SetActive(false);
 			camera2.SetActive(true);
@@ -87,7 +100,9 @@ public class Game : Photon.MonoBehaviour {
 	[RPC]
 	void GameStartRPC() {
 		hasStarted = true;
+		endTime = Time.time + gameTime;
 		Menu.Instance.state = Menu.State.Blank;
+		winnerName = "TBC";
 	}
 	
 	[RPC]
@@ -102,6 +117,23 @@ public class Game : Photon.MonoBehaviour {
 			playerOne.spawner.SpawnRecipe(playerOne.currentRecipe);
 		else if (playerTwo.player.isLocal)
 			playerTwo.spawner.SpawnRecipe(playerTwo.currentRecipe);
+	}
+
+	[RPC]
+	void TimeRanOutRPC() {
+		hasStarted = false;
+		_audio.Stop();
+		_audio.clip = buzzer;
+		_audio.loop = false;
+		_audio.Play();
+		Menu.Instance.state = Menu.State.WinnerScreen;
+		
+		int p1 = playerOne.player.GetScore();
+		int p2 = playerTwo.player.GetScore();
+		if (p1 == p2) winnerName = playerOne.player.name + " " + playerTwo.player.name + "\nDraw!";
+		if (p1 > p2) winnerName = playerOne.player.name + "\nWins!";
+		if (p2 > p1) winnerName = playerTwo.player.name + "\nWins!";
+		Menu.Instance.UpdateWinnerScreen();
 	}
 
 	/// <summary>
@@ -137,6 +169,10 @@ public class Game : Photon.MonoBehaviour {
 		return null;
 	}
 	
+	public void ToggleMusic() {
+		_audio.mute = !_audio.mute;
+	}
+	
 	void Awake() {
 		if (Instance == null) Instance = this;
 		else Destroy(this);
@@ -147,12 +183,25 @@ public class Game : Photon.MonoBehaviour {
 		playerTwo.id = Player.Id.two;
 		playerTwo.spawner = foodSpawner2.GetComponent<RecipeSpawner>();
 		defaultCamera = Camera.main.gameObject;
+
+	}
+	
+	void Start() {
+		_audio = GetComponent<AudioSource>();
+		_audio.clip = menuMusic;
+		_audio.loop = true;
+		_audio.Play();
 	}
 	
 	void Update() {
-		if (Input.GetKey(KeyCode.Space)) {
+		if (Input.GetKey(KeyCode.Space) && hasStarted) {
 			if (playerOne.player.isLocal) catapult1.SendMessage("OnPushButtonDown");
 			if (playerTwo.player.isLocal) catapult2.SendMessage("OnPushButtonDown");
+		}
+		if (PhotonNetwork.isMasterClient) {
+			if (Time.time > endTime && hasStarted) {
+				photonView.RPC("TimeRanOutRPC", PhotonTargets.All);
+			}
 		}
 	}
 	

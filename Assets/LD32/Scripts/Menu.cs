@@ -10,7 +10,8 @@ public class Menu : MonoBehaviour {
     	FindGame,
     	CreateGame,
     	WaitingForPlayer,
-    	EscapeMenu
+    	EscapeMenu,
+    	WinnerScreen
     }
     
     public void SetStateBlank() {
@@ -46,6 +47,7 @@ public class Menu : MonoBehaviour {
 				findRoomControls.SetActive(true);
 				createRoomControls.SetActive(false);
 				inRoomControls.SetActive(false);
+				winnerScreen.SetActive(false);
 				DisplayRoomList();
     			break;
 			case State.CreateGame:
@@ -54,6 +56,7 @@ public class Menu : MonoBehaviour {
     			createRoomControls.SetActive(true);
     			findRoomControls.SetActive(false);
     			inRoomControls.SetActive(false);
+				winnerScreen.SetActive(false);
     			break;
     		case State.WaitingForPlayer:
 				gameTitle.SetActive(true);
@@ -61,6 +64,7 @@ public class Menu : MonoBehaviour {
     			preGameControls.SetActive(false);
     			createRoomControls.SetActive(false);
     			findRoomControls.SetActive(false);
+				winnerScreen.SetActive(false);
     			break;
     		case State.EscapeMenu:
 				gameTitle.SetActive(true);
@@ -68,6 +72,15 @@ public class Menu : MonoBehaviour {
 				preGameControls.SetActive(false);
 				findRoomControls.SetActive(false);
 				createRoomControls.SetActive(false);
+				winnerScreen.SetActive(false);
+    			break;
+    		case State.WinnerScreen:
+    			gameTitle.SetActive(true);
+    			winnerScreen.SetActive(true);
+				preGameControls.SetActive(false);
+				findRoomControls.SetActive(false);
+				createRoomControls.SetActive(false);
+				inRoomControls.SetActive(false);
     			break;
 			default:
 				gameTitle.SetActive(false);
@@ -75,6 +88,7 @@ public class Menu : MonoBehaviour {
 				findRoomControls.SetActive(false);
 				createRoomControls.SetActive(false);
 				inRoomControls.SetActive(false);
+				winnerScreen.SetActive(false);
 				break;
     		}
 			if (state == State.Blank) statusText.SetActive(false);
@@ -105,6 +119,11 @@ public class Menu : MonoBehaviour {
 	/// The in room controls: leave room button
 	/// </summary>
 	public GameObject inRoomControls;
+
+	/// <summary>
+	/// The winner screen.
+	/// </summary>
+	public GameObject winnerScreen;
 
 	public GameObject statusText;
 	
@@ -150,6 +169,9 @@ public class Menu : MonoBehaviour {
 		}
 	}
 	
+	public void UpdateWinnerScreen() {
+		winnerScreen.GetComponent<Text>().text = Game.Instance.winnerName;
+	}
 	
 	void Awake() {
 		if (Instance == null) Instance = this;
@@ -158,7 +180,7 @@ public class Menu : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Game.hasStarted)
+		if (PhotonNetwork.inRoom)
 			if (Input.GetKey(KeyCode.Escape)) 
 				state = State.EscapeMenu;
 	}

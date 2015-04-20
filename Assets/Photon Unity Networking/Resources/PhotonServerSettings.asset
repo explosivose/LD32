@@ -32,4 +32,6 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - SpawnRecipeRPC
+  - TimeRanOutRPC
+  - PlayRandomCollisionSound
   DisableAutoOpenWizard: 0

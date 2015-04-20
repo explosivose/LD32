@@ -149,6 +149,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 2
+  _collisionSounds:
+  - {fileID: 8300000, guid: a5c1b12f779d5d942be90273a4d68c2b, type: 3}
+  - {fileID: 8300000, guid: 9c99cce277f61a242b4b9ab6569a0921, type: 3}
+  - {fileID: 8300000, guid: 9e8e98af84b951548869662d8478ec2b, type: 3}
+  - {fileID: 8300000, guid: 96c12b36d5e673646a648beb254af013, type: 3}
+  - {fileID: 8300000, guid: 1b4a465962caf4345b7b7738f10a217a, type: 3}
+  - {fileID: 8300000, guid: 5f184337f863e4c42b070af8e9c96d05, type: 3}
 --- !u!114 &11497786
 MonoBehaviour:
   m_ObjectHideFlags: 1

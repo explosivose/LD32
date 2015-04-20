@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 455404}
   - 114: {fileID: 11445912}
+  - 82: {fileID: 8273224}
+  - 114: {fileID: 11401100}
   m_Layer: 0
   m_Name: _GAMELOGIC
   m_TagString: Untagged
@@ -28,6 +30,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8273224
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136868}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &11401100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 11445912}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &11445912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,7 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00cf5e22e8310ad4296a3b6939492f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimer: 0
+  gameTime: 75
+  startTimer: 3
+  menuMusic: {fileID: 8300000, guid: 0e2049ef31a31ca4fa75ef56e2a13272, type: 3}
+  gameOverMusic: {fileID: 0}
+  buzzer: {fileID: 8300000, guid: 74a8b13cf824da940a5e5a95a90eab95, type: 3}
   foodSpawner1: {fileID: 0}
   camera1: {fileID: 0}
   catapult1: {fileID: 0}
@@ -49,12 +149,50 @@ MonoBehaviour:
   catapult2: {fileID: 0}
   character2: {fileID: 0}
   recipes:
-  - name: burger
+  - name: Simple Patty
     ingredients:
     - {fileID: 107570, guid: f9b30c8c902d5864184d6f4480cb88e5, type: 2}
     - {fileID: 177080, guid: c3ecf3220bef5cf4dac082cb83bacc04, type: 2}
     - {fileID: 164862, guid: a670253b6c1fd9040bc41a54b04c92cc, type: 2}
     - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
+  - name: Breakfast Butty
+    ingredients:
+    - {fileID: 107570, guid: f9b30c8c902d5864184d6f4480cb88e5, type: 2}
+    - {fileID: 180734, guid: 8479c0e3ff4802842a2872b5338b26d4, type: 2}
+    - {fileID: 145350, guid: 80770675930a9b24894f44814644839b, type: 2}
+    - {fileID: 153172, guid: dfbe06effbedf474998bb2d714d11750, type: 2}
+    - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
+  - name: Inferno Burger
+    ingredients:
+    - {fileID: 114764, guid: e2cda4d8b923754408cec7ef1e6697df, type: 2}
+    - {fileID: 177080, guid: c3ecf3220bef5cf4dac082cb83bacc04, type: 2}
+    - {fileID: 194712, guid: 27c5f1d6eede67442acd28160a491546, type: 2}
+    - {fileID: 107570, guid: f9b30c8c902d5864184d6f4480cb88e5, type: 2}
+    - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
+    - {fileID: 184854, guid: f9b812e1508ab6544910b7e58982110a, type: 2}
+  - name: Bacon Bun
+    ingredients:
+    - {fileID: 107570, guid: f9b30c8c902d5864184d6f4480cb88e5, type: 2}
+    - {fileID: 180734, guid: 8479c0e3ff4802842a2872b5338b26d4, type: 2}
+    - {fileID: 180734, guid: 8479c0e3ff4802842a2872b5338b26d4, type: 2}
+    - {fileID: 118520, guid: 584a959425de60f49a4f44f69ede32db, type: 2}
+  - name: Salad
+    ingredients:
+    - {fileID: 123950, guid: 3bc84ca313e95234eb4674acbafb91df, type: 2}
+    - {fileID: 184854, guid: f9b812e1508ab6544910b7e58982110a, type: 2}
+    - {fileID: 118520, guid: 584a959425de60f49a4f44f69ede32db, type: 2}
+    - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
+    - {fileID: 123950, guid: 3bc84ca313e95234eb4674acbafb91df, type: 2}
+    - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
+  - name: Meat Machine
+    ingredients:
+    - {fileID: 107570, guid: f9b30c8c902d5864184d6f4480cb88e5, type: 2}
+    - {fileID: 177080, guid: c3ecf3220bef5cf4dac082cb83bacc04, type: 2}
+    - {fileID: 180734, guid: 8479c0e3ff4802842a2872b5338b26d4, type: 2}
+    - {fileID: 180734, guid: 8479c0e3ff4802842a2872b5338b26d4, type: 2}
+    - {fileID: 177080, guid: c3ecf3220bef5cf4dac082cb83bacc04, type: 2}
+    - {fileID: 164862, guid: a670253b6c1fd9040bc41a54b04c92cc, type: 2}
+    - {fileID: 164862, guid: a670253b6c1fd9040bc41a54b04c92cc, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

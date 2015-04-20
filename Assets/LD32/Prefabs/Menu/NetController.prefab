@@ -83,6 +83,7 @@ MonoBehaviour:
   createRoomControls: {fileID: 0}
   findRoomControls: {fileID: 0}
   inRoomControls: {fileID: 0}
+  winnerScreen: {fileID: 0}
   statusText: {fileID: 0}
   joinGameButtonPrefab: {fileID: 171864, guid: 76200465260a53d4ba23a066d269f378, type: 2}
 --- !u!1001 &100100000

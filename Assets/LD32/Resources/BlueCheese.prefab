@@ -26,8 +26,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478486}
-  - 54: {fileID: 5434300}
-  - 114: {fileID: 11429168}
   m_Layer: 0
   m_Name: bluecheese
   m_TagString: Untagged
@@ -122,21 +120,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198388}
   m_Mesh: {fileID: 4300000, guid: ef27490b34c9d894195b9648682fc304, type: 3}
---- !u!54 &5434300
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156112}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!54 &5468448
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -176,18 +159,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 5
---- !u!114 &11429168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed4511076313ca41b9aafe21a385c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 5
+  _collisionSounds:
+  - {fileID: 8300000, guid: a5c1b12f779d5d942be90273a4d68c2b, type: 3}
+  - {fileID: 8300000, guid: 9c99cce277f61a242b4b9ab6569a0921, type: 3}
+  - {fileID: 8300000, guid: 9e8e98af84b951548869662d8478ec2b, type: 3}
+  - {fileID: 8300000, guid: 96c12b36d5e673646a648beb254af013, type: 3}
+  - {fileID: 8300000, guid: 1b4a465962caf4345b7b7738f10a217a, type: 3}
+  - {fileID: 8300000, guid: 5f184337f863e4c42b070af8e9c96d05, type: 3}
 --- !u!114 &11454496
 MonoBehaviour:
   m_ObjectHideFlags: 1

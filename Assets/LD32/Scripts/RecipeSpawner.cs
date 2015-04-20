@@ -12,7 +12,7 @@ public class RecipeSpawner : MonoBehaviour {
 	
 	IEnumerator Start() {
 		while(true) {
-			yield return new WaitForSeconds(Random.Range(10f, 20f));
+			yield return new WaitForSeconds(Random.Range(15, 30f));
 			if (Game.hasStarted && !_spawning) {
 				int index = Random.Range(0, randomShit.ingredients.Count-1);
 				GameObject randomIngredient = randomShit.ingredients[index];
