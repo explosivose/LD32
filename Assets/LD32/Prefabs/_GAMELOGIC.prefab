@@ -41,24 +41,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTimer: 0
   foodSpawner1: {fileID: 0}
+  camera1: {fileID: 0}
+  catapult1: {fileID: 0}
+  character1: {fileID: 0}
   foodSpawner2: {fileID: 0}
-  playerOne:
-    id: 0
-    name: 
-    score: 0
-    currentRecipe:
-      name: 
-      ingredients: []
-    spawner: {fileID: 0}
-  playerTwo:
-    id: 0
-    name: 
-    score: 0
-    currentRecipe:
-      name: 
-      ingredients: []
-    spawner: {fileID: 0}
-  recipes: []
+  camera2: {fileID: 0}
+  catapult2: {fileID: 0}
+  character2: {fileID: 0}
+  recipes:
+  - name: burger
+    ingredients:
+    - {fileID: 107570, guid: f9b30c8c902d5864184d6f4480cb88e5, type: 2}
+    - {fileID: 177080, guid: c3ecf3220bef5cf4dac082cb83bacc04, type: 2}
+    - {fileID: 164862, guid: a670253b6c1fd9040bc41a54b04c92cc, type: 2}
+    - {fileID: 179456, guid: 3a8f8a8762d43e34e9ee6ec65888e0cb, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

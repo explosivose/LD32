@@ -10,4 +10,11 @@ public class Ingredient : MonoBehaviour {
 	void Awake() {
 		tag = "Ingredient";
 	}
+	
+	// Called when another player requests ownership of a PhotonView from you (the current owner).
+	void OnOwnershipRequest(object[] viewAndPlayer) {
+		//PhotonView view = viewAndPlayer[0] as PhotonView;
+		
+		// PhotonPlayer requestingPlayer = viewAndPlayer[1] as PhotonPlayer;
+	}
 }

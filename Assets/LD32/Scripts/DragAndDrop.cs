@@ -7,7 +7,7 @@ using System.Collections;
 public class DragAndDrop : MonoBehaviour {
 
 	public float reachDistanceFromCamera;
-	public Transform counter;
+
 	public float maxMoveForce;
 	public Pid controller;
 	
@@ -70,7 +70,7 @@ public class DragAndDrop : MonoBehaviour {
 		
 		// set a carry force to follow the mouse cursor
 		Vector3 mousePos = Input.mousePosition;
-		mousePos.z = Mathf.Abs(Camera.main.transform.position.z - counter.position.z);
+		mousePos.z = _carrying.position.z;
 		Vector3 target = Camera.main.ScreenToWorldPoint(mousePos);
 		Vector3 direction = (target - _carrying.position).normalized;
 		float force = -controller.output(0f, direction.magnitude);

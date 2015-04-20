@@ -11,9 +11,11 @@ public class RecipeSpawner : MonoBehaviour {
 	
 	IEnumerator Start() {
 		yield return new WaitForSeconds(Random.Range(3f, 6f));
-		int index = Random.Range(0, randomShit.ingredients.Count-1);
-		GameObject randomIngredient = randomShit.ingredients[index];
-		SpawnIngredient(randomIngredient);
+		if (Game.hasStarted) {
+			int index = Random.Range(0, randomShit.ingredients.Count-1);
+			GameObject randomIngredient = randomShit.ingredients[index];
+			SpawnIngredient(randomIngredient);
+		}
 	}
 	
 

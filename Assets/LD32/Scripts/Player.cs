@@ -12,9 +12,7 @@ public class Player {
 		one, two
 	}
 	public Id id;
-	public string name;
-	public int score;
 	public Recipe currentRecipe;
 	public RecipeSpawner spawner;
-	
+	public PhotonPlayer player;
 }

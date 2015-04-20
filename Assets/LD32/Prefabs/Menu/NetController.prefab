@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 429398}
   - 114: {fileID: 11468536}
+  - 114: {fileID: 11415646}
   - 148: {fileID: 14874436}
   m_Layer: 0
   m_Name: NetController
@@ -29,6 +30,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11415646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a6e80dc4c0a6640a7d43005e51b9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11468536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,9 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9f981e4a69429479d7b256fde5fc6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 113324, guid: 72498317136871f40ad983bc4f9b3b2c, type: 2}
-  spawnPointA: {fileID: 0}
-  spawnPointB: {fileID: 0}
   NetUI: {fileID: 0}
   hostsUI: {fileID: 0}
   statusTextUI: {fileID: 0}
