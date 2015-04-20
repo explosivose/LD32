@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 // spawns recipes!
 public class RecipeSpawner : MonoBehaviour {
@@ -52,5 +53,17 @@ public class RecipeSpawner : MonoBehaviour {
 			transform.position,
 			Random.rotation, 0);
 		instance.name = ingredient.name;
+		
+		// get the rigidbodies in the hierarchy
+		List<Rigidbody> rbs = new List<Rigidbody>();
+		if (instance.GetComponent<Rigidbody>()) {
+			rbs.Add(instance.GetComponent<Rigidbody>());
+		}
+		instance.GetComponentsInChildren<Rigidbody>(rbs);
+		// make them not kinematic (for the owner)
+		foreach(Rigidbody rb in rbs) {
+			rb.isKinematic = false;
+		}
+
 	}
 }

@@ -5,12 +5,16 @@ using System.Collections;
 public class RecipeUi : MonoBehaviour {
 
 	public Player.Id playerId;
-	private Text text;
 	
 	private Player player;
 	
+	private Text text;
+		
 	void Start() {
 		text = GetComponent<Text>();
+		// display recipe for local player
+		if (name.Contains("2")) playerId = Player.Id.two;
+		if (name.Contains("1")) playerId = Player.Id.one;
 		player = Game.Instance.PlayerById(playerId);
 	} 
 	
