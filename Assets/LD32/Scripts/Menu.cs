@@ -51,6 +51,7 @@ public class Menu : MonoBehaviour {
 			// Rename button with Game name chosen by remote hosts
 			Transform b = hostline.transform.FindChild("Button");
 			b.FindChild("HostLineText").GetComponent<Text>().text = room.name;
+			Debug.Log(room.name);
 			Button joinbutton = b.GetComponent<Button>();
 			joinbutton.onClick.AddListener(() => NetManager.Instance.JoinRoom(room));
 			
