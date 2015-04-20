@@ -34,14 +34,12 @@ public class Game : Photon.MonoBehaviour {
 			playerOne.player = PhotonNetwork.player;
 			defaultCamera.SetActive(false);
 			camera1.SetActive(true);
-			catapult1.SetActive(true);
 			catapult1.GetComponent<Catapult>().playerId = playerOne.id;
 		} else {
 			// me
 			playerTwo.player = PhotonNetwork.player;
 			defaultCamera.SetActive(false);
 			camera2.SetActive(true);
-			catapult2.SetActive(true);
 			catapult2.GetComponent<Catapult>().playerId = playerTwo.id;
 			// the other player
 			playerOne.player = PhotonNetwork.masterClient;

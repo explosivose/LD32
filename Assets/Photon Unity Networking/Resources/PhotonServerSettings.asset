@@ -31,4 +31,5 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - SpawnRecipeRPC
+  - CatapultLaunchRPC
   DisableAutoOpenWizard: 0
