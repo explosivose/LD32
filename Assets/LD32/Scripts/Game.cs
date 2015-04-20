@@ -26,18 +26,20 @@ public class Game : Photon.MonoBehaviour {
 	public Player playerTwo {get; set;}
 	
 	public Recipe[] recipes;
-
+	
+	private GameObject defaultCamera;
+	
 	public void JoinedGame() {
 		if (PhotonNetwork.isMasterClient) {
 			playerOne.player = PhotonNetwork.player;
-			Camera.main.gameObject.SetActive(false);
+			defaultCamera.SetActive(false);
 			camera1.SetActive(true);
 			catapult1.SetActive(true);
 			catapult1.GetComponent<Catapult>().playerId = playerOne.id;
 		} else {
 			// me
 			playerTwo.player = PhotonNetwork.player;
-			Camera.main.gameObject.SetActive(false);
+			defaultCamera.SetActive(false);
 			camera2.SetActive(true);
 			catapult2.SetActive(true);
 			catapult2.GetComponent<Catapult>().playerId = playerTwo.id;
@@ -68,6 +70,11 @@ public class Game : Photon.MonoBehaviour {
 	
 	public void GameStop() {
 		Debug.Log("Game over...");
+		camera1.SetActive(false);
+		character1.SetActive(false);
+		camera2.SetActive(false);
+		character2.SetActive(false);
+		defaultCamera.SetActive(true);
 		if (PhotonNetwork.inRoom)
 			photonView.RPC("GameStopRPC", PhotonTargets.All);
 		
@@ -76,8 +83,7 @@ public class Game : Photon.MonoBehaviour {
 	void SpawnRecipe(Player player) {
 		player.SetRecipe(Random.Range(0, recipes.Length-1));
 		
-		if (player.player.isLocal)
-			player.spawner.SpawnRecipe(player.currentRecipe);
+		photonView.RPC("SpawnRecipeRPC", player.player);
 	}
 	
 	[RPC]
@@ -90,6 +96,13 @@ public class Game : Photon.MonoBehaviour {
 		hasStarted = false;
 	}
 	
+	[RPC]
+	void SpawnRecipeRPC() {
+		if (playerOne.player.isLocal)
+			playerOne.spawner.SpawnRecipe(playerOne.currentRecipe);
+		else if (playerTwo.player.isLocal)
+			playerTwo.spawner.SpawnRecipe(playerTwo.currentRecipe);
+	}
 
 	/// <summary>
 	/// Score the specified playerId according to ingredientNames.
@@ -133,6 +146,7 @@ public class Game : Photon.MonoBehaviour {
 		playerTwo = new Player();	// client
 		playerTwo.id = Player.Id.two;
 		playerTwo.spawner = foodSpawner2.GetComponent<RecipeSpawner>();
+		defaultCamera = Camera.main.gameObject;
 	}
 	
 	void Start() {
