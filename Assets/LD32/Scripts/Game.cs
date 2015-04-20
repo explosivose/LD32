@@ -62,7 +62,7 @@ public class Game : Photon.MonoBehaviour {
 		playerTwo.player.SetScore(0);
 		SpawnRecipe(playerOne);
 		SpawnRecipe(playerTwo);
-		Menu.Instance.ShowServerBrowser(false);
+		Menu.Instance.state = Menu.State.Blank;
 		photonView.RPC("GameStartRPC", PhotonTargets.All);
 	}
 	
@@ -87,11 +87,13 @@ public class Game : Photon.MonoBehaviour {
 	[RPC]
 	void GameStartRPC() {
 		hasStarted = true;
+		Menu.Instance.state = Menu.State.Blank;
 	}
 	
 	[RPC]
 	void GameStopRPC() {
 		hasStarted = false;
+		Menu.Instance.state = Menu.State.Blank;
 	}
 	
 	[RPC]
@@ -147,9 +149,7 @@ public class Game : Photon.MonoBehaviour {
 		defaultCamera = Camera.main.gameObject;
 	}
 	
-	void Start() {
-	
-	}
+
 	
 	void OnGUI() {
 		if (!hasStarted) return;

@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: .213793039, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: e0adca6fb2e7e4f46b6f502307ab22c3, type: 3}
     m_FontSize: 14
@@ -116,9 +116,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: .0880190283, g: .26153481, b: .544117689, a: .427450985}
-    m_HighlightedColor: {r: .162197232, g: .435359925, b: .882352948, a: .494117647}
-    m_PressedColor: {r: .130136251, g: .312804997, b: .610294104, a: .396078438}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 1, g: .68275857, b: 0, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: .100000001

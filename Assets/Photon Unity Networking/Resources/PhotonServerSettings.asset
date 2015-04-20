@@ -19,6 +19,7 @@ MonoBehaviour:
   AppID: f09d171d-6c32-46ef-9bc4-c7820bf93dca
   PingCloudServersOnAwake: 0
   RpcList:
+  - CatapultLaunchRPC
   - Chat
   - DestroyRpc
   - GameStartRPC
@@ -31,5 +32,4 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - SpawnRecipeRPC
-  - CatapultLaunchRPC
   DisableAutoOpenWizard: 0

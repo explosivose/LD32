@@ -5,51 +5,142 @@ using System.Collections.Generic;
 	
 public class Menu : MonoBehaviour {
 
+    public enum State {
+    	Blank,
+    	FindGame,
+    	CreateGame,
+    	WaitingForPlayer,
+    	EscapeMenu
+    }
+    
+    public void SetStateBlank() {
+    	state = State.Blank;
+    }
+    
+    public void SetStateFindGame() {
+    	state = State.FindGame;
+    }
+    
+    public void SetStateHostGame() {
+		state = State.CreateGame;
+    }
+    
+    public void SetStateWaitingForPlayer() {
+    	state = State.WaitingForPlayer;
+    }
+    
+    public void SetStateEscapeMenu() {
+    	state = State.EscapeMenu;
+    }
+    
+    public State state {
+    	get {
+    		return _state;
+    	}
+    	set {
+    		_state = value;
+    		switch(_state) {
+    		case State.FindGame:
+				gameTitle.SetActive(true);
+				preGameControls.SetActive(true);
+				findRoomControls.SetActive(true);
+				createRoomControls.SetActive(false);
+				inRoomControls.SetActive(false);
+				DisplayRoomList();
+    			break;
+			case State.CreateGame:
+				gameTitle.SetActive(true);
+    			preGameControls.SetActive(true);
+    			createRoomControls.SetActive(true);
+    			findRoomControls.SetActive(false);
+    			inRoomControls.SetActive(false);
+    			break;
+    		case State.WaitingForPlayer:
+				gameTitle.SetActive(true);
+    			inRoomControls.SetActive(true);
+    			preGameControls.SetActive(false);
+    			createRoomControls.SetActive(false);
+    			findRoomControls.SetActive(false);
+    			break;
+    		case State.EscapeMenu:
+				gameTitle.SetActive(true);
+    			inRoomControls.SetActive(true);
+				preGameControls.SetActive(false);
+				findRoomControls.SetActive(false);
+				createRoomControls.SetActive(false);
+    			break;
+			default:
+				gameTitle.SetActive(false);
+				preGameControls.SetActive(false);
+				findRoomControls.SetActive(false);
+				createRoomControls.SetActive(false);
+				inRoomControls.SetActive(false);
+				break;
+    		}
+			if (state == State.Blank) statusText.SetActive(false);
+			else statusText.SetActive(true);
+    	}
+    }
+    
     public static Menu Instance;
     
-    private const string typeName = "LD32CookFight";
+	public GameObject gameTitle;
+	
+	/// <summary>
+	/// The pre game controls: FindGame button, CreateGame button, playerName textfield.
+	/// </summary>
+	public GameObject preGameControls;		
+	
+	/// <summary>
+	/// The create room controls: room name text field, start game button
+	/// </summary>
+	public GameObject createRoomControls;
 
-	// UI
-	public GameObject NetUI;
-	public GameObject hostsUI;
-	public GameObject statusTextUI;
-	public GameObject hostLineUI;
-	public GameObject hostNameInputUI;
+	/// <summary>
+	/// The find room controls: join game buttons procedurally added
+	/// </summary>
+	public GameObject findRoomControls;
 
-	private List<GameObject> hostLines;
+	/// <summary>
+	/// The in room controls: leave room button
+	/// </summary>
+	public GameObject inRoomControls;
+
+	public GameObject statusText;
+	
+	public GameObject joinGameButtonPrefab;
+
+	private State _state;
+	private List<GameObject> _joinGameButtons;
 	
 	public string status {
 		get {
-			return statusTextUI.GetComponent<Text>().text;
+			return statusText.GetComponent<Text>().text;
 		}
 		set {
-			statusTextUI.GetComponent<Text>().text = value;
+			statusText.GetComponent<Text>().text = value;
 		}
-	}
-	
-	public void ShowServerBrowser(bool show) {
-		NetUI.gameObject.SetActive(show);
 	}
 	
 	public void DisplayRoomList() {
 		status = "Rooms found: " + NetManager.Instance.roomList.Length;
 		
 		// Clean previous host list
-		hostLines.ForEach(child => Destroy(child));
+		_joinGameButtons.ForEach(child => Destroy(child));
 		
 		int count = 0;
 		foreach(RoomInfo room in NetManager.Instance.roomList){
 			
 			// Create a new join button
-			GameObject hostline = Instantiate(hostLineUI);
+			GameObject joinGameButton = Instantiate(joinGameButtonPrefab);
 			// Keep reference to button so we can delete them on refresh
-			hostLines.Add(hostline);
+			_joinGameButtons.Add(joinGameButton);
 			// Position button correctly as a list (TO DO: Scroll support for large host lists)
-			hostline.transform.SetParent(hostsUI.transform, false);
-			hostline.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -30f*count);
+			joinGameButton.transform.SetParent(findRoomControls.transform, false);
+			joinGameButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -30f*count);
 			
 			// Rename button with Game name chosen by remote hosts
-			Transform b = hostline.transform.FindChild("Button");
+			Transform b = joinGameButton.transform.FindChild("Button");
 			b.FindChild("HostLineText").GetComponent<Text>().text = room.name;
 			Debug.Log(room.name);
 			Button joinbutton = b.GetComponent<Button>();
@@ -63,9 +154,13 @@ public class Menu : MonoBehaviour {
 	void Awake() {
 		if (Instance == null) Instance = this;
 		else Destroy(this);
-		hostLines = new List<GameObject>();
+		_joinGameButtons = new List<GameObject>();
 	}
 
-
+	void Update() {
+		if (Game.hasStarted)
+			if (Input.GetKey(KeyCode.Escape)) 
+				state = State.EscapeMenu;
+	}
 
 }

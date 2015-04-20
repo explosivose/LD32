@@ -14,6 +14,15 @@ public class NetManager : Photon.MonoBehaviour {
 		get; set;
 	}
 	
+	public string playerName {
+		get {
+			return PhotonNetwork.playerName;
+		}
+		set {
+			PhotonNetwork.playerName = value;
+		}
+	}
+	
 	public RoomInfo[] roomList {
 		get; private set;
 	}
@@ -31,6 +40,7 @@ public class NetManager : Photon.MonoBehaviour {
 			roomName = "FoodRoom";
 		
 		PhotonNetwork.CreateRoom(roomName);
+		Menu.Instance.state = Menu.State.WaitingForPlayer;
 	}
 	
 	// join an existing server
@@ -38,6 +48,9 @@ public class NetManager : Photon.MonoBehaviour {
 		PhotonNetwork.JoinRoom(room.name);
 	}
 	
+	public void LeaveRoom() {
+		PhotonNetwork.LeaveRoom();
+	}
 	
 	void Awake() {
 		if (Instance == null) Instance = this;
@@ -45,6 +58,7 @@ public class NetManager : Photon.MonoBehaviour {
 	}
 	
 	void Start() {
+		Debug.Log("Connecting to PhotonMaster...");
 		PhotonNetwork.ConnectUsingSettings(gameType);
 	}
 	
@@ -53,6 +67,8 @@ public class NetManager : Photon.MonoBehaviour {
 	// Called after the connection to the master is established and authenticated but only when PhotonNetwork.autoJoinLobby is false.
 	void OnConnectedToMaster() {
 		PhotonNetwork.logLevel = logLevel;
+		Debug.Log("Connected to PhotonMaster.");
+		Menu.Instance.state = Menu.State.FindGame;
 	}
 	
 	// Called for any update of the room listing (no matter if "new" list or "update for known" list). Only called in the Lobby state (on master server).
@@ -62,31 +78,32 @@ public class NetManager : Photon.MonoBehaviour {
 	
 	// called when joined the PUN lobby
 	void OnJoinedLobby() {
-		Menu.Instance.ShowServerBrowser(true);
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 	// Called when a CreateRoom() call failed. The parameter provides ErrorCode and message (as array). 
 	void OnPhotonCreateRoomFailed(object[] codeAndMsg) {
 		Menu.Instance.status = (string)codeAndMsg[1];
-		Menu.Instance.ShowServerBrowser(true);
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 	// Called when a JoinRoom() call failed. The parameter provides ErrorCode and message (as array)
 	void OnPhotonJoinRoomFailed(object[] codeAndMsg) {
 		Menu.Instance.status = (string)codeAndMsg[1];
-		Menu.Instance.ShowServerBrowser(true);
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 	// Called when a JoinRandom() call failed. The parameter provides ErrorCode and message.
 	void OnPhotonRandomJoinFailed(object[] codeAndMsg) {
 		Menu.Instance.status = (string)codeAndMsg[1];
-		Menu.Instance.ShowServerBrowser(true);
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 	// Called when entering a room (by creating or joining it). Called on all clients (including the Master Client)
 	void OnJoinedRoom() {
 		Game.Instance.JoinedGame();
 		Menu.Instance.status = "Waiting for opponent...";
+		Menu.Instance.state = Menu.State.WaitingForPlayer;
 	}
 	
 	// Called when a remote player entered the room. This PhotonPlayer is already added to the playerlist at this time.
@@ -100,22 +117,26 @@ public class NetManager : Photon.MonoBehaviour {
 		PhotonNetwork.LeaveRoom();
 		Game.Instance.GameStop();
 		Menu.Instance.status = "Player disconnected: " + player.name;
+		Menu.Instance.state = Menu.State.WaitingForPlayer;
 	}
 	
 	// Called when the local user/client left a room.
 	void OnLeftRoom() {
 		Game.Instance.GameStop();
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 	// Called when something causes the connection to fail (after it was established), followed by a call to OnDisconnectedFromPhoton(). 
 	void OnConnectionFail(DisconnectCause cause) {
 		Menu.Instance.status = cause.ToString();
 		Game.Instance.GameStop();
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 	// Called if a connect call to the Photon server failed before the connection was established, followed by a call to OnDisconnectedFromPhoton().
 	void OnFailedToConnectToPhoton(DisconnectCause cause) {
 		Menu.Instance.status = cause.ToString();
+		Menu.Instance.state = Menu.State.CreateGame;
 	}
 	
 
