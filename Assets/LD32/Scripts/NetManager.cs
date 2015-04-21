@@ -111,6 +111,10 @@ public class NetManager : Photon.MonoBehaviour {
 	void OnPhotonPlayerConnected(PhotonPlayer player) {
 		Game.Instance.PlayerJoined(player);
 		Menu.Instance.status = "Player joined!";
+		if (PhotonNetwork.isMasterClient) {
+			PhotonNetwork.room.visible = false;
+			PhotonNetwork.room.open = false;
+		}
 	}
 	
 	// Called when a remote player left the room. This PhotonPlayer is already removed from the playerlist at this time.
